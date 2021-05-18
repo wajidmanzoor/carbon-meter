@@ -73,7 +73,7 @@ class Application(tk.Tk):
         print(hardware)
         print(country)
         print(cloud_provider)
-        self.outputcarbonfootprint()
+        self.carbon_footprint_window()
 
     def time_taken_widget(self, event=None):
         tk.Label(self, text="TIME TAKEN: ").grid(
@@ -100,6 +100,29 @@ class Application(tk.Tk):
         self.SecsCombo.grid(row=6, column=5)
         tk.Button(self, text='Submit', command=self.submit).grid(
             row=8, column=2)
+
+    def carbon_footprint_window(self):
+        self.window = tk.Toplevel()
+        self.window.title("CARBON FOOTPRINT")
+        tk.Label(
+            self.window, text="CARBON FOOTPRINT", font="Roboto 12")
+
+        tk.Label(
+            self.window, text='TOTAL.', font=('calibre', 10, 'bold')).grid(row=0, column=0)
+        self.total_out = tk.Text(
+            self.window, height=2, width=15).grid(row=0, column=1)
+        tk.Label(
+            self.window, text='COMUNICATION.', font=('calibre', 10, 'bold')).grid(row=0, column=2)
+        self.communication_out = tk.Text(
+            self.window, height=2, width=15).grid(row=0, column=3)
+        tk.Label(
+            self.window, text='COMPUTUTIONAL.', font=('calibre', 10, 'bold')).grid(row=0, column=4)
+        self.compututional_out = tk.Text(
+            self.window, height=2, width=15).grid(row=0, column=5)
+        tkinter.ttk.Separator(self, orient="horizontal").grid(
+            row=1, column=0, columnspan=6, sticky='ew')
+        tk.Label(
+            self.window, text='For Recomendation Press The Button Below', font=('calibre', 10, 'bold')).grid(row=2, column=0, columnspan=6)
 
 
 app = Application()
