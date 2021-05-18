@@ -101,6 +101,9 @@ class Application(tk.Tk):
         tk.Button(self, text='Submit', command=self.submit).grid(
             row=8, column=2)
 
+    def here(self):
+        pass
+
     def carbon_footprint_window(self):
         self.window = tk.Toplevel()
         self.window.title("CARBON FOOTPRINT")
@@ -123,6 +126,9 @@ class Application(tk.Tk):
             row=1, column=0, columnspan=6, sticky='ew')
         tk.Label(
             self.window, text='For Recomendation Press The Button Below', font=('calibre', 10, 'bold')).grid(row=2, column=0, columnspan=6)
+
+        tk.Button(self.window, text='Here', command=self.here).grid(
+            row=3, column=0, columnspan=6)
 
 
 app = Application()
