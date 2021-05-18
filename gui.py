@@ -49,12 +49,36 @@ class Application(tk.Tk):
         tk.Label(self, text="COUNTRY: ").grid(row=2, column=4, padx=(10, 0))
         self.CountryCombo = tkinter.ttk.Combobox(
             width=15, state="readonly", textvariable=self.country_var)
-        #self.CountryCombo.bind('<<ComboboxSelected>>', self.taketimeinput)
+        self.CountryCombo.bind('<<ComboboxSelected>>', self.time_taken_widget)
         self.CountryCombo.set("SELECT COUNTRY")
         self.CountryCombo.grid(row=2, column=5, padx=(0, 10))
 
         tkinter.ttk.Separator(self, orient="horizontal").grid(
             row=3, column=0, columnspan=5, sticky='ew')
+
+    def time_taken_widget(self, event=None):
+        tk.Label(self, text="TIME TAKEN: ").grid(
+            row=5, column=2, columnspan=6, padx=(10, 0))
+
+        tk.Label(self, text="HOURS: ").grid(
+            row=6, column=0, padx=(10, 0))
+        self.HourEntry = tk.Entry(self, width=15, textvariable=self.hour_var,
+                                  font=('calibre', 10, 'normal'))
+        self.HourEntry.grid(row=6, column=1)
+
+        tk.Label(self, text="MINS: ").grid(
+            row=6, column=2, padx=(10, 0))
+        self.MinsCombo = tkinter.ttk.Combobox(
+            self, width=15, values=list(range(0, 61)), state="readonly", textvariable=self.min_var)
+        self.MinsCombo.set("SELECT MINS")
+        self.MinsCombo.grid(row=6, column=3)
+
+        tk.Label(self, text="SECS: ").grid(
+            row=6, column=4, padx=(10, 0))
+        self.SecsCombo = tkinter.ttk.Combobox(
+            self, width=15, values=list(range(0, 61)), state="readonly", textvariable=self.sec_var)
+        self.SecsCombo.set("SELECT SECS")
+        self.SecsCombo.grid(row=6, column=5)
 
 
 app = Application()
