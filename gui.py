@@ -29,7 +29,7 @@ class Application(tk.Tk):
         headingLabel.grid(row=0, column=0, columnspan=5,
                           padx=10, pady=10, sticky="w")
         tkinter.ttk.Separator(self, orient="horizontal").grid(
-            row=1, column=0, columnspan=5, sticky='ew')
+            row=1, column=0, columnspan=6, sticky='ew')
 
         tk.Label(self, text="HARDWARE: ").grid(
             row=2, column=0, padx=(10, 0))
@@ -54,7 +54,7 @@ class Application(tk.Tk):
         self.CountryCombo.grid(row=2, column=5, padx=(0, 10))
 
         tkinter.ttk.Separator(self, orient="horizontal").grid(
-            row=3, column=0, columnspan=5, sticky='ew')
+            row=3, column=0, columnspan=6, sticky='ew')
 
     def submit(self):
         hardware = self.hardware_var.get()
@@ -77,7 +77,7 @@ class Application(tk.Tk):
 
     def time_taken_widget(self, event=None):
         tk.Label(self, text="TIME TAKEN: ").grid(
-            row=5, column=2, columnspan=6, padx=(10, 0))
+            row=5, column=0, columnspan=6, padx=(10, 0))
 
         tk.Label(self, text="HOURS: ").grid(
             row=6, column=0, padx=(10, 0))
@@ -99,7 +99,7 @@ class Application(tk.Tk):
         self.SecsCombo.set("SELECT SECS")
         self.SecsCombo.grid(row=6, column=5)
         tk.Button(self, text='Submit', command=self.submit).grid(
-            row=8, column=2)
+            row=8, column=0, columnspan=6)
 
     def here(self):
         pass
@@ -108,27 +108,27 @@ class Application(tk.Tk):
         self.window = tk.Toplevel()
         self.window.title("CARBON FOOTPRINT")
         tk.Label(
-            self.window, text="CARBON FOOTPRINT", font="Roboto 12")
+            self.window, text="CARBON FOOTPRINT", font="Roboto 12").grid(row=0, column=0)
 
         tk.Label(
-            self.window, text='TOTAL.', font=('calibre', 10, 'bold')).grid(row=0, column=0)
+            self.window, text='TOTAL.', font=('calibre', 10, 'bold')).grid(row=1, column=0)
         self.total_out = tk.Text(
-            self.window, height=2, width=15).grid(row=0, column=1)
+            self.window, height=2, width=15).grid(row=1, column=1)
         tk.Label(
-            self.window, text='COMUNICATION.', font=('calibre', 10, 'bold')).grid(row=0, column=2)
+            self.window, text='COMUNICATION.', font=('calibre', 10, 'bold')).grid(row=1, column=2)
         self.communication_out = tk.Text(
-            self.window, height=2, width=15).grid(row=0, column=3)
+            self.window, height=2, width=15).grid(row=1, column=3)
         tk.Label(
-            self.window, text='COMPUTUTIONAL.', font=('calibre', 10, 'bold')).grid(row=0, column=4)
+            self.window, text='COMPUTUTIONAL.', font=('calibre', 10, 'bold')).grid(row=1, column=4)
         self.compututional_out = tk.Text(
-            self.window, height=2, width=15).grid(row=0, column=5)
-        tkinter.ttk.Separator(self, orient="horizontal").grid(
-            row=1, column=0, columnspan=6, sticky='ew')
+            self.window, height=2, width=15).grid(row=1, column=5)
+        tkinter.ttk.Separator(self.window, orient="horizontal").grid(
+            row=2, column=0, columnspan=6, sticky='ew')
         tk.Label(
-            self.window, text='For Recomendation Press The Button Below', font=('calibre', 10, 'bold')).grid(row=2, column=0, columnspan=6)
+            self.window, text='For Recomendation Press The Button Below', font=('calibre', 10, 'bold')).grid(row=3, column=0, columnspan=6)
 
         tk.Button(self.window, text='Here', command=self.here).grid(
-            row=3, column=0, columnspan=6)
+            row=4, column=0, columnspan=6)
 
 
 app = Application()
