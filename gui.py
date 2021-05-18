@@ -56,6 +56,25 @@ class Application(tk.Tk):
         tkinter.ttk.Separator(self, orient="horizontal").grid(
             row=3, column=0, columnspan=5, sticky='ew')
 
+    def submit(self):
+        hardware = self.hardware_var.get()
+        country = self.country_var.get()
+        cloud_provider = self.cloudprovider_var.get()
+        hours = int(self.hour_var.get())
+        mins = int(self.min_var.get())
+        secs = int(self.sec_var.get())
+
+        self.hardware_var.set("SELECT HARDWARE")
+        self.country_var.set("SELECT CLOUD PROVIDER")
+        self.cloudprovider_var.set("SELECT COUNTRY")
+        self.hour_var.set('')
+        self.min_var.set('SELECT MINS')
+        self.sec_var.set('SELECT SECS')
+        print(hardware)
+        print(country)
+        print(cloud_provider)
+        self.outputcarbonfootprint()
+
     def time_taken_widget(self, event=None):
         tk.Label(self, text="TIME TAKEN: ").grid(
             row=5, column=2, columnspan=6, padx=(10, 0))
@@ -79,6 +98,8 @@ class Application(tk.Tk):
             self, width=15, values=list(range(0, 61)), state="readonly", textvariable=self.sec_var)
         self.SecsCombo.set("SELECT SECS")
         self.SecsCombo.grid(row=6, column=5)
+        tk.Button(self, text='Submit', command=self.submit).grid(
+            row=8, column=2)
 
 
 app = Application()
